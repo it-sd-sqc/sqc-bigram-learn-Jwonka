@@ -4,7 +4,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,6 +64,15 @@ class MainTest {
         () -> assertDoesNotThrow(() -> Main.main(new String[]{"./sample-texts/empty.txt"}))
     );
   }
-
-  // TODO: Create your test(s) below. /////////////////////////////////////////
+    // TODO: Create your test(s) below. /////////////////////////////////////////
+    @Test
+    void getId() {
+      Connection db = Main.createConnection();
+      String validInput = "Tish's";
+        assertDoesNotThrow(
+                () -> {
+                    Main.getId(db, validInput);
+                }, "Exception thrown for valid input containing a '"
+        );
+    }
 }
