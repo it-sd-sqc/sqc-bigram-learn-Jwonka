@@ -72,6 +72,7 @@ class MainTest {
         assertDoesNotThrow(
                 () -> {
                     Main.getId(db, validInput);
+                    db.close();
                 }, "Exception thrown for valid input containing a '"
         );
     }
